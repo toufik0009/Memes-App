@@ -33,8 +33,9 @@ class MainActivity() : AppCompatActivity() {
     }
 
     private fun loadMeme(){
-        //Progress bar show
+        //Progress bar show (Lotty)
         val progress=findViewById<LottieAnimationView>(R.id.progress)
+
         Handler(Looper.getMainLooper()).postDelayed({
             progress.visibility= View.VISIBLE
             progress.playAnimation()
@@ -42,14 +43,16 @@ class MainActivity() : AppCompatActivity() {
 
 
         //create queue
-        val queue = Volley.newRequestQueue(this)
-        val url = "https://meme-api.com/gimme"
+        val queue = Volley.newRequestQueue(this)//create a request Queue
+        val url = "https://meme-api.com/gimme"//url
         //Api call process
         val jsonObjectRequest = JsonObjectRequest (
             Request.Method.GET, url, null,
             Response.Listener{ response ->
               currentImageUrl = response.getString("url")
+
                 var memeImageView:ImageView= findViewById(R.id.memeImageView)
+
                 Glide.with(this).load(currentImageUrl).listener(object:RequestListener<Drawable>  {
 
                     override fun onLoadFailed(
@@ -72,8 +75,10 @@ class MainActivity() : AppCompatActivity() {
                         progress.visibility= View.GONE
                         return false
                     }
-                }).into(memeImageView)
+                }).into(memeImageView)//display image
             },
+
+
             Response.ErrorListener {
                 Toast.makeText(this,"Something went Wrong",Toast.LENGTH_LONG).show()
             })
@@ -85,9 +90,9 @@ class MainActivity() : AppCompatActivity() {
          intent.type="text/plain"
          intent.putExtra(Intent.EXTRA_TEXT,"Hey Check this Cool Memes:- $currentImageUrl")
 
-        val chooser= Intent.createChooser(intent,"Share this meme Using...")
+        val chooser= Intent.createChooser(intent,"Share this meme Using...")//in which app sand
 
-         startActivity(chooser)
+         startActivity(chooser)//start
     }
 
     fun nextMeme(view: View) {

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_color"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
+<!--Lottie Animation Logo(1)-->
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="410dp"
         android:layout_height="126dp"
@@ -16,78 +18,59 @@
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/funny_face">
-
     </com.airbnb.lottie.LottieAnimationView>
 
-    <ImageView
-        android:id="@+id/memeImageView"
-        android:layout_width="410dp"
-        android:layout_height="518dp"
-        app:layout_constraintBottom_toTopOf="@id/shareButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.692"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/progress"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/memeImageView"
-        app:lottie_rawRes="@raw/animloder"
-        tools:ignore="MissingConstraints">
-
-    </com.airbnb.lottie.LottieAnimationView>
-
-    <Button
-        android:id="@+id/shareButton"
-        android:layout_width="174dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#050505"
-        android:gravity="center"
-        android:onClick="shareMeme"
-        android:padding="12dp"
-        android:text="Share"
-        android:textColorHighlight="#30D3AD"
-        android:textColorLink="#2FDFDF"
-        android:textSize="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.272"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/guideline2"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/nextButton"
-        android:layout_width="174dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#130C0C"
-        android:gravity="center"
-        android:onClick="nextMeme"
-        android:padding="12dp"
-        android:text="Next"
-        android:textSize="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.714"
-        app:layout_constraintLeft_toRightOf="@id/guideline2"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5"/>
+        android:layout_gravity="center">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/memeImageView"
+            android:layout_width="match_parent"
+            android:layout_height="520dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="@+id/memeImageView"
+            app:lottie_rawRes="@raw/animloder">
+
+        </com.airbnb.lottie.LottieAnimationView>
+
+    </RelativeLayout>
+
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="100dp"
+    android:layout_marginBottom="10dp">
+
+    <ImageButton
+        android:id="@+id/shareButton"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:src="@drawable/baseline_share_24"
+        android:onClick="shareMeme"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="#3DA2D6"
+        />
+    <ImageButton
+        android:id="@+id/nextButton"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:src="@drawable/baseline_arrow_forward_24"
+        android:onClick="nextMeme"
+        android:backgroundTint="#3DD675"
+        />
+</LinearLayout>
+
+
+
+</LinearLayout>
